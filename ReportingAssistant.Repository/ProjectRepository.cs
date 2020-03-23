@@ -7,21 +7,28 @@ namespace ReportingAssistant.Repository
     public interface IProjectRepository
     {
         void InsertProject(Projects projects);
+
         void UpdateProject(Projects projects);
+
         void DeleteProjects(int ProjectID);
+
         List<Projects> GetProject();
+
         Projects GetProjectByID(int ProjectID);
     }
+
     public class ProjectRepository : IProjectRepository
     {
-        ReportingAssistantDBContext db;
+        private ReportingAssistantDBContext db;
+
         public ProjectRepository()
         {
             db = new ReportingAssistantDBContext();
         }
+
         public void DeleteProjects(int ProjectID)
         {
-            Projects project= db.projects.Where(temp => temp.ProjectID == ProjectID).FirstOrDefault();
+            Projects project = db.projects.Where(temp => temp.ProjectID == ProjectID).FirstOrDefault();
             db.projects.Remove(project);
             db.SaveChanges();
         }
@@ -46,7 +53,7 @@ namespace ReportingAssistant.Repository
 
         public void UpdateProject(Projects projects)
         {
-            Projects ExistingProject = db.projects.Where(temp => temp.ProjectID == projects.ProjectID && temp.AdminID==projects.AdminID).FirstOrDefault();
+            Projects ExistingProject = db.projects.Where(temp => temp.ProjectID == projects.ProjectID && temp.AdminID == projects.AdminID).FirstOrDefault();
             ExistingProject.ProjectName = projects.ProjectName;
             ExistingProject.AvailabilityStatus = projects.AvailabilityStatus;
             ExistingProject.CategoryID = projects.CategoryID;
@@ -54,7 +61,5 @@ namespace ReportingAssistant.Repository
             ExistingProject.Image = projects.Image;
             db.SaveChanges();
         }
-
-      
     }
 }

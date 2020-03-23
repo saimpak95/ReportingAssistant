@@ -15,9 +15,10 @@ namespace ReportingAssistant.DomainModel
         public int AdminID { get; set; }
         public int UserID { get; set; }
         public DateTime DateOfTask { get; set; }
-        public string Attachements { get; set; }
+        public string Attachments { get; set; }
+        public int ProjectID { get; set; }
 
-        [ForeignKey("Projects")]
+        [ForeignKey("ProjectID")]
         public virtual Projects Projects { get; set; }
        
         [ForeignKey("AdminID")]
