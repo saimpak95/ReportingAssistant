@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ReportingAssistant.Repository
 {
-    public interface ICategory
+    public interface ICategoryRepository
     {
         void InsertCategory(Categories categories);
 
@@ -17,7 +17,7 @@ namespace ReportingAssistant.Repository
         Categories GetCategoryByID(int CategoryID);
     }
 
-    public class CategoryRepository : ICategory
+    public class CategoryRepository : ICategoryRepository
     {
         private ReportingAssistantDBContext db;
 
