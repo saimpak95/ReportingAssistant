@@ -69,7 +69,7 @@ FinalCommentID int primary key identity(1,1),
 Screen nvarchar(100),
 FinalCommentDescription nvarchar(max),
 UserID int references Users(UserID) on delete set null,
-DateOfTaskDone datetime,
+DateOfFinalComment datetime,
 Attachments nvarchar(max) null,
 ProjectID int references Projects(ProjectID) on delete set null
 
