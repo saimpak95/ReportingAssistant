@@ -4,18 +4,23 @@ using System.Linq;
 
 namespace ReportingAssistant.Repository
 {
-    public interface ITaskDoneRepository {
-
-        void InsertTaskDone(TasksDone Task);
-        void UpdateTaskDone(TasksDone Task);
-        void DeleteTaskDone(int TaskDoneID);
-        List<TasksDone> GetTasksDones();
-        TasksDone GetTasksDoneByID(int TasksDoneID);
-    
-    }
-    public class TaskDoneRepository :ITaskDoneRepository
+    public interface ITaskDoneRepository
     {
-        ReportingAssistantDBContext db;
+        void InsertTaskDone(TasksDone Task);
+
+        void UpdateTaskDone(TasksDone Task);
+
+        void DeleteTaskDone(int TaskDoneID);
+
+        List<TasksDone> GetTasksDones();
+
+        TasksDone GetTasksDoneByID(int TasksDoneID);
+    }
+
+    public class TaskDoneRepository : ITaskDoneRepository
+    {
+        private ReportingAssistantDBContext db;
+
         public TaskDoneRepository()
         {
             db = new ReportingAssistantDBContext();
@@ -24,18 +29,17 @@ namespace ReportingAssistant.Repository
         public void DeleteTaskDone(int TaskDoneID)
         {
             TasksDone ExistingTaskDone = db.tasksDones.Where(temp => temp.TaskDoneID == TaskDoneID).FirstOrDefault();
-            if (ExistingTaskDone != null) {
+            if (ExistingTaskDone != null)
+            {
                 db.tasksDones.Remove(ExistingTaskDone);
                 db.SaveChanges();
             }
-            
         }
 
         public TasksDone GetTasksDoneByID(int TasksDoneID)
         {
             TasksDone ExistingTaskDone = db.tasksDones.Where(temp => temp.TaskDoneID == TasksDoneID).FirstOrDefault();
             return ExistingTaskDone;
-
         }
 
         public List<TasksDone> GetTasksDones()
@@ -53,14 +57,14 @@ namespace ReportingAssistant.Repository
         public void UpdateTaskDone(TasksDone Task)
         {
             TasksDone ExistingTaskDone = db.tasksDones.Where(temp => temp.TaskDoneID == Task.TaskDoneID).FirstOrDefault();
-            if (ExistingTaskDone != null) {
+            if (ExistingTaskDone != null)
+            {
                 ExistingTaskDone.Screen = Task.Screen;
                 ExistingTaskDone.TaskDoneDescription = Task.TaskDoneDescription;
                 ExistingTaskDone.DateOfTaskDone = Task.DateOfTaskDone;
                 ExistingTaskDone.Attachments = Task.Attachments;
                 db.SaveChanges();
             }
-          
         }
     }
 }
