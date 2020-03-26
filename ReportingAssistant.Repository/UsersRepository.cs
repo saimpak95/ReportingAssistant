@@ -7,35 +7,44 @@ namespace ReportingAssistant.Repository
     public interface IUsersRepository
     {
         void InserUser(Users users);
-        void UpdateUserDetails(Users users);
-        void UpdateUserPassword(Users users);
-        void DeleteUser(int UserID);
-        List<Users> GetUsers();
-        Users GetUsersByEmailAndPassword(string Email, string Password);
-        Users GetUsersByEmail(string Email);
-        Users GetUsersByUserID(int UserID);
 
+        void UpdateUserDetails(Users users);
+
+        void UpdateUserPassword(Users users);
+
+        void DeleteUser(int UserID);
+
+        List<Users> GetUsers();
+
+        Users GetUsersByEmailAndPassword(string Email, string Password);
+
+        Users GetUsersByEmail(string Email);
+
+        Users GetUsersByUserID(int UserID);
     }
+
     public class UsersRepository : IUsersRepository
     {
-        ReportingAssistantDBContext db;
+        private ReportingAssistantDBContext db;
+
         public UsersRepository()
         {
             db = new ReportingAssistantDBContext();
         }
+
         public void DeleteUser(int UserID)
         {
             Users user = db.users.Where(temp => temp.UserID == UserID).FirstOrDefault();
-            if (user != null) {
+            if (user != null)
+            {
                 db.users.Remove(user);
                 db.SaveChanges();
             }
-           
         }
 
         public List<Users> GetUsers()
         {
-            List<Users> users = db.users.ToList();
+            List<Users> users = db.users.Where(temp => temp.Role == "User").ToList();
             return users;
         }
 
@@ -43,12 +52,11 @@ namespace ReportingAssistant.Repository
         {
             Users user = db.users.Where(temp => temp.Email == Email).FirstOrDefault();
             return user;
-
         }
 
         public Users GetUsersByEmailAndPassword(string Email, string Password)
         {
-            Users user = db.users.Where(temp => temp.Email == Email && temp.PasswordHash==Password).FirstOrDefault();
+            Users user = db.users.Where(temp => temp.Email == Email && temp.PasswordHash == Password).FirstOrDefault();
             return user;
         }
 
@@ -66,7 +74,7 @@ namespace ReportingAssistant.Repository
 
         public void UpdateUserDetails(Users users)
         {
-            Users ExistingAccount = db.users.Where(temp => temp.UserID ==users.UserID).FirstOrDefault();
+            Users ExistingAccount = db.users.Where(temp => temp.UserID == users.UserID).FirstOrDefault();
             if (ExistingAccount != null)
             {
                 ExistingAccount.UserName = users.UserName;

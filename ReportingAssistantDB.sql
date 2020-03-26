@@ -10,10 +10,9 @@ UserID int primary key identity(1,1),
 UserName nvarchar(100),
 Email nvarchar(100),
 PasswordHash nvarchar(100),
+Role nvarchar(100) default 'User',
 Phone nvarchar(100),
-Gender nvarchar(50),
-IsAdmin bit default 0
-
+Gender nvarchar(50)
 
 )
 go

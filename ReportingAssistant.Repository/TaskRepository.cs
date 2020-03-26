@@ -2,24 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace ReportingAssistant.Repository
 {
     public interface ITaskrepository
     {
         void InsertTask(Tasks task);
+
         void UpdateTask(Tasks tasks);
+
         void DeleteTask(int TaskID);
+
         List<Tasks> GetTasks();
+
         Tasks GetTasksByID(int TaskID);
     }
+
     public class TaskRepository : ITaskrepository
     {
-        ReportingAssistantDBContext db;
+        private ReportingAssistantDBContext db;
+
         public TaskRepository()
         {
             db = new ReportingAssistantDBContext();
         }
+
         public void DeleteTask(int TaskID)
         {
             Tasks tasks = db.tasks.Where(temp => temp.TaskID == TaskID).FirstOrDefault();
@@ -47,9 +53,9 @@ namespace ReportingAssistant.Repository
 
         public void UpdateTask(Tasks tasks)
         {
-
             Tasks ExistngTask = db.tasks.Where(temp => temp.TaskID == tasks.TaskID).FirstOrDefault();
-            if (ExistngTask != null) {
+            if (ExistngTask != null)
+            {
                 ExistngTask.Screen = tasks.Screen;
                 ExistngTask.TaskDescription = tasks.TaskDescription;
                 ExistngTask.AdminID = tasks.AdminID;
@@ -58,9 +64,7 @@ namespace ReportingAssistant.Repository
                 ExistngTask.Attachments = tasks.Attachments;
                 ExistngTask.ProjectID = tasks.ProjectID;
                 db.SaveChanges();
-
             }
-          
         }
     }
 }
