@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriesViewModel.cs" />
+    <Compile Include="DeleteFinalCommentViewModel.cs" />
     <Compile Include="DeleteProjectViewModel.cs" />
     <Compile Include="DeleteTaskDoneViewModel.cs" />
     <Compile Include="DeleteTaskViewModel.cs" />
