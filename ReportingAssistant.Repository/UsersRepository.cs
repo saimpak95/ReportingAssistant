@@ -21,6 +21,7 @@ namespace ReportingAssistant.Repository
         Users GetUsersByEmail(string Email);
 
         Users GetUsersByUserID(int UserID);
+        int GetLatestUser();
     }
 
     public class UsersRepository : IUsersRepository
@@ -40,6 +41,12 @@ namespace ReportingAssistant.Repository
                 db.users.Remove(user);
                 db.SaveChanges();
             }
+        }
+
+        public int GetLatestUser()
+        {
+            int LastestID = db.users.Select(temp => temp.UserID).Max();
+            return LastestID;
         }
 
         public List<Users> GetUsers()
