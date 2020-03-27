@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriesViewModel.cs" />
+    <Compile Include="EditProjectDetailViewModel.cs" />
     <Compile Include="EditUserPasswordViewModel.cs" />
     <Compile Include="EditUserProfileViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
