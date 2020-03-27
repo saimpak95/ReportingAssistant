@@ -5,6 +5,7 @@ namespace ReportingAssistant.ViewModel
     public class EditUserProfileViewModel
     {
         public int UserID { get; set; }
+
         [Required]
         public string UserName { get; set; }
 
