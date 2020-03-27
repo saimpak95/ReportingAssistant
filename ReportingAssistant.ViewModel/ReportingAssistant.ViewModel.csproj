@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CategoriesViewModel.cs" />
     <Compile Include="DeleteProjectViewModel.cs" />
+    <Compile Include="DeleteTaskViewModel.cs" />
     <Compile Include="EditProjectDetailViewModel.cs" />
     <Compile Include="EditTaskViewModel.cs" />
     <Compile Include="EditUserPasswordViewModel.cs" />
