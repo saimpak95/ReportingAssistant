@@ -49,6 +49,7 @@
     <Compile Include="EditUserProfileViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
     <Compile Include="NewProjectViewModel.cs" />
+    <Compile Include="NewTaskViewModel.cs" />
     <Compile Include="ProjectViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterViewModel.cs" />
