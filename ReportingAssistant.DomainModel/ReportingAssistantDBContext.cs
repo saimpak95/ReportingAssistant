@@ -3,7 +3,7 @@
 namespace ReportingAssistant.DomainModel
 {
     public class ReportingAssistantDBContext : DbContext
-    {       ]
+    {       
         public DbSet<Users> users { get; set; }
         public DbSet<Categories> categories { get; set; }
         public DbSet<Projects> projects { get; set; }
