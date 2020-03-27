@@ -46,11 +46,13 @@
     <Compile Include="DeleteProjectViewModel.cs" />
     <Compile Include="DeleteTaskViewModel.cs" />
     <Compile Include="EditProjectDetailViewModel.cs" />
+    <Compile Include="EditTaskDoneViewModel.cs" />
     <Compile Include="EditTaskViewModel.cs" />
     <Compile Include="EditUserPasswordViewModel.cs" />
     <Compile Include="EditUserProfileViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
     <Compile Include="NewProjectViewModel.cs" />
+    <Compile Include="NewTaskDoneViewModel.cs" />
     <Compile Include="NewTaskViewModel.cs" />
     <Compile Include="ProjectViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
