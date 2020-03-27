@@ -20,7 +20,7 @@ namespace ReportingAssistant.DomainModel
 
         [ForeignKey("ProjectID")]
         public virtual Projects Projects { get; set; }
-       
+
         [ForeignKey("AdminID")]
         public virtual Users Users { get; set; }
     }

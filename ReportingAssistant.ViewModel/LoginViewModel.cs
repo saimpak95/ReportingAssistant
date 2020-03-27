@@ -2,9 +2,8 @@
 
 namespace ReportingAssistant.ViewModel
 {
-   public class LoginViewModel
+    public class LoginViewModel
     {
-
         [Required]
         [RegularExpression(@"(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})")]
         public string Email { get; set; }

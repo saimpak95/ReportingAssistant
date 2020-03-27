@@ -20,6 +20,7 @@ namespace ReportingAssistant.DomainModel
 
         [ForeignKey("CategoryID")]
         public virtual Categories Categories { get; set; }
+
         [ForeignKey("AdminID")]
         public virtual Users Users { get; set; }
     }

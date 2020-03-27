@@ -21,6 +21,7 @@ namespace ReportingAssistant.Repository
         Users GetUsersByEmail(string Email);
 
         Users GetUsersByUserID(int UserID);
+
         int GetLatestUser();
     }
 

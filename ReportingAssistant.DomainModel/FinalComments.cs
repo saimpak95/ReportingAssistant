@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReportingAssistant.DomainModel
 {
-   public class FinalComments
+    public class FinalComments
     {
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int FinalCommentID { get; set; }

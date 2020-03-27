@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace ReportingAssistant.Repository
 {
     public interface IFinalCommentRepository
     {
         void InsertFinalComment(FinalComments Task);
+
         void UpdateFinalComment(FinalComments Task);
+
         void DeleteFinalComment(int FinalCommentID);
+
         List<FinalComments> GetFinalComment();
+
         FinalComments GetFinalCommentByID(int FinalCommentID);
     }
-   public class FinalCommentRepository :IFinalCommentRepository
+
+    public class FinalCommentRepository : IFinalCommentRepository
     {
-        ReportingAssistantDBContext db;
+        private ReportingAssistantDBContext db;
 
         public FinalCommentRepository()
         {
