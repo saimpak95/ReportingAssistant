@@ -45,6 +45,7 @@
     <Compile Include="CategoriesViewModel.cs" />
     <Compile Include="DeleteProjectViewModel.cs" />
     <Compile Include="EditProjectDetailViewModel.cs" />
+    <Compile Include="EditTaskViewModel.cs" />
     <Compile Include="EditUserPasswordViewModel.cs" />
     <Compile Include="EditUserProfileViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
