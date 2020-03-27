@@ -53,6 +53,7 @@
     <Compile Include="EditUserProfileViewModel.cs" />
     <Compile Include="FinalCommentViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
+    <Compile Include="NewFinalCommentViewModel.cs" />
     <Compile Include="NewProjectViewModel.cs" />
     <Compile Include="NewTaskDoneViewModel.cs" />
     <Compile Include="NewTaskViewModel.cs" />
