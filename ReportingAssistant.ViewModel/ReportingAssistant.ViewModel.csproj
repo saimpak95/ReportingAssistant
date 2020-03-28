@@ -43,10 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriesViewModel.cs" />
+    <Compile Include="DeleteCategoryViewModel.cs" />
     <Compile Include="DeleteFinalCommentViewModel.cs" />
     <Compile Include="DeleteProjectViewModel.cs" />
     <Compile Include="DeleteTaskDoneViewModel.cs" />
     <Compile Include="DeleteTaskViewModel.cs" />
+    <Compile Include="EditCategoryViewModel.cs" />
     <Compile Include="EditFinalCommentViewModel.cs" />
     <Compile Include="EditProjectDetailViewModel.cs" />
     <Compile Include="EditTaskDoneViewModel.cs" />
@@ -55,6 +57,7 @@
     <Compile Include="EditUserProfileViewModel.cs" />
     <Compile Include="FinalCommentViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
+    <Compile Include="NewCategoriesViewModel.cs" />
     <Compile Include="NewFinalCommentViewModel.cs" />
     <Compile Include="NewProjectViewModel.cs" />
     <Compile Include="NewTaskDoneViewModel.cs" />

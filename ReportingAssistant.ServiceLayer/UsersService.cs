@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using AutoMapper.Configuration;
-using ReportingAssistant.ViewModel;
-using ReportingAssistant.Repository;
+﻿using AutoMapper;
 using ReportingAssistant.DomainModel;
+using ReportingAssistant.Repository;
+using ReportingAssistant.ViewModel;
+using System.Collections.Generic;
 
 namespace ReportingAssistant.ServiceLayer
 {
@@ -28,11 +23,12 @@ namespace ReportingAssistant.ServiceLayer
         UserViewModel GetUsersByEmail(string Email);
 
         UserViewModel GetUsersByUserID(int UserID);
-
     }
+
     public class UsersService : IUsersService
     {
-        IUsersRepository ur;
+        private IUsersRepository ur;
+
         public UsersService()
         {
             ur = new UsersRepository();
@@ -43,12 +39,10 @@ namespace ReportingAssistant.ServiceLayer
             ur.DeleteUser(UserID);
         }
 
-    
-
         public List<UserViewModel> GetUsers()
         {
             List<Users> users = ur.GetUsers();
-            var Config = new MapperConfiguration(cfg=> { cfg.CreateMap<Users, UserViewModel>(); });
+            var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Users, UserViewModel>(); });
             IMapper mapper = Config.CreateMapper();
             List<UserViewModel> uvm = mapper.Map<List<Users>, List<UserViewModel>>(users);
             return uvm;
@@ -65,8 +59,8 @@ namespace ReportingAssistant.ServiceLayer
                 uvm = mapper.Map<Users, UserViewModel>(user);
                 return uvm;
             }
-            return uvm;
-
+            else
+             return uvm;
         }
 
         public UserViewModel GetUsersByEmailAndPassword(string Email, string Password)
@@ -77,17 +71,17 @@ namespace ReportingAssistant.ServiceLayer
             {
                 var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Users, UserViewModel>(); });
                 IMapper mapper = Config.CreateMapper();
-                 uvm = mapper.Map<Users, UserViewModel>(users);
+                uvm = mapper.Map<Users, UserViewModel>(users);
                 return uvm;
             }
-            return uvm;
-
+            else
+                return uvm;
         }
 
         public UserViewModel GetUsersByUserID(int UserID)
         {
             Users user = ur.GetUsersByUserID(UserID);
-            var Config =new MapperConfiguration(cfg=> { cfg.CreateMap<Users, UserViewModel>(); });
+            var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Users, UserViewModel>(); });
             IMapper mapper = Config.CreateMapper();
             UserViewModel uvm = mapper.Map<Users, UserViewModel>(user);
             return uvm;
@@ -95,19 +89,18 @@ namespace ReportingAssistant.ServiceLayer
 
         public int InserUser(RegisterViewModel uvm)
         {
-            var Config = new MapperConfiguration(cfg=> { cfg.CreateMap<RegisterViewModel, Users>(); });
+            var Config = new MapperConfiguration(cfg => { cfg.CreateMap<RegisterViewModel, Users>(); });
             IMapper mapper = Config.CreateMapper();
             Users users = mapper.Map<RegisterViewModel, Users>(uvm);
             users.PasswordHash = SHA256Converter.GenerateHash(uvm.Password);
             ur.InserUser(users);
             int LatestUserID = ur.GetLatestUserID();
             return LatestUserID;
-
         }
 
         public void UpdateUserDetails(EditUserProfileViewModel uvm)
         {
-             var Config = new MapperConfiguration(cfg=> { cfg.CreateMap<EditUserProfileViewModel, Users>(); });
+            var Config = new MapperConfiguration(cfg => { cfg.CreateMap<EditUserProfileViewModel, Users>(); });
             IMapper mapper = Config.CreateMapper();
             Users users = mapper.Map<EditUserProfileViewModel, Users>(uvm);
             ur.UpdateUserDetails(users);
