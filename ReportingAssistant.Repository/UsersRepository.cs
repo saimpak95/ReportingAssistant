@@ -22,7 +22,7 @@ namespace ReportingAssistant.Repository
 
         Users GetUsersByUserID(int UserID);
 
-        int GetLatestUser();
+        int GetLatestUserID();
     }
 
     public class UsersRepository : IUsersRepository
@@ -44,7 +44,7 @@ namespace ReportingAssistant.Repository
             }
         }
 
-        public int GetLatestUser()
+        public int GetLatestUserID()
         {
             int LastestID = db.users.Select(temp => temp.UserID).Max();
             return LastestID;
