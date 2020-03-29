@@ -39,7 +39,7 @@ namespace ReportingAssistant.ServiceLayer
             List<ProjectViewModel> pvm = null;
             if (projects != null)
             {
-                var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Projects, ProjectViewModel>(); });
+                var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Projects, ProjectViewModel>(); cfg.CreateMap<Users, UserViewModel>(); cfg.CreateMap<Categories, CategoriesViewModel>();  });
                 IMapper mapper = Config.CreateMapper();
                 pvm = mapper.Map<List<Projects>, List<ProjectViewModel>>(projects);
                 return pvm;
@@ -54,7 +54,7 @@ namespace ReportingAssistant.ServiceLayer
             ProjectViewModel pvm = null;
             if (projects != null)
             {
-                var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Projects, ProjectViewModel>(); });
+                var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Projects, ProjectViewModel>(); cfg.CreateMap<Users, UserViewModel>(); cfg.CreateMap<Categories, CategoriesViewModel>(); });
                 IMapper mapper = Config.CreateMapper();
                 pvm = mapper.Map<Projects, ProjectViewModel>(projects);
                 return pvm;
