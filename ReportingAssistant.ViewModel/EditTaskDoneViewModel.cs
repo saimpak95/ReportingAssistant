@@ -27,8 +27,5 @@ namespace ReportingAssistant.ViewModel
         [Required]
         public int TaskID { get; set; }
 
-        public virtual List<UserViewModel> Users { get; set; }
-
-        public virtual List<TaskViewModel> Tasks { get; set; }
     }
 }
