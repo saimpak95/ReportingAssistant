@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ReportingAssistant.ViewModel
@@ -26,6 +25,5 @@ namespace ReportingAssistant.ViewModel
 
         [Required]
         public int TaskID { get; set; }
-
     }
 }

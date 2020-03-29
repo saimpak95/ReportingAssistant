@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ReportingAssistant.ServiceLayer
 {
-   public class SHA256Converter
+    public class SHA256Converter
     {
         public static string GenerateHash(string InputValue)
         {

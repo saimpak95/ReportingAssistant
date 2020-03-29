@@ -60,7 +60,7 @@ namespace ReportingAssistant.ServiceLayer
                 return uvm;
             }
             else
-             return uvm;
+                return uvm;
         }
 
         public UserViewModel GetUsersByEmailAndPassword(string Email, string Password)
