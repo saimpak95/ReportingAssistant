@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ReportingAssistant.ViewModel
 {
-    internal class EditTaskViewModel
+    public class EditTaskViewModel
     {
         [Required]
         public int TaskID { get; set; }
@@ -30,8 +30,5 @@ namespace ReportingAssistant.ViewModel
         [Required]
         public int ProjectID { get; set; }
 
-        public virtual List<ProjectViewModel> Projects { get; set; }
-
-        public virtual List<UserViewModel> Users { get; set; }
     }
 }

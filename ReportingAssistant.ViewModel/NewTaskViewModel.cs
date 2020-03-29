@@ -27,8 +27,5 @@ namespace ReportingAssistant.ViewModel
         [Required]
         public int ProjectID { get; set; }
 
-        public virtual List<ProjectViewModel> Projects { get; set; }
-
-        public virtual List<UserViewModel> Users { get; set; }
     }
 }
