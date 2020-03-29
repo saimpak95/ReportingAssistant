@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-
+using System.Web.Optimization;
 namespace ReportingAssistant
 {
     public class Global : HttpApplication
@@ -12,6 +12,7 @@ namespace ReportingAssistant
         {
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
