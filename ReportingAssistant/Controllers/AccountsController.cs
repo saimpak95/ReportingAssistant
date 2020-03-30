@@ -33,7 +33,6 @@ namespace ReportingAssistant.Controllers
                 Session["CurrentUserEmail"] = rvm.Email;
                 Session["CurrentUserPassword"] = rvm.Password;
                 Session["CurrentUserGender"] = rvm.Gender;
-                Session["CurrentUserIsAdmin"] = false;
                 return RedirectToAction("Index", "Home");
 
             }
@@ -43,6 +42,42 @@ namespace ReportingAssistant.Controllers
                 return View();
             }
          
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginViewModel lvm)
+        {
+            if (ModelState.IsValid)
+            {
+                UserViewModel user = this.us.GetUsersByEmailAndPassword(lvm.Email, lvm.Password);
+                if (user != null)
+                {
+
+                    Session["CurrentUserID"] = user.UserID;
+                    Session["CurrentUserName"] =user.UserName;
+                    Session["CurrentUserEmail"] = user.Email;
+                    Session["CurrentUserPassword"] = user.PasswordHash;
+                    Session["CurrentUserGender"] = user.Gender;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("x", "Invalid Email And Password");
+                    return View();
+                }
+                  
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid Email And Password");
+                return View();
+            }
+          
         }
     }
 }
