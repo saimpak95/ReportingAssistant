@@ -93,6 +93,7 @@ namespace ReportingAssistant.ServiceLayer
             IMapper mapper = Config.CreateMapper();
             Users users = mapper.Map<RegisterViewModel, Users>(uvm);
             users.PasswordHash = SHA256Converter.GenerateHash(uvm.Password);
+            users.Role = "User";
             ur.InserUser(users);
             int LatestUserID = ur.GetLatestUserID();
             return LatestUserID;

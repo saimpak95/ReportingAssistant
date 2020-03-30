@@ -20,17 +20,19 @@
 }
 
 .MySelector {
-    background-color: #424874;
+    background-color: #464159;
     color: white
 }
 
+
+
 .dropdown-item:hover {
-    background-color: #424874 !important;
+    background-color: #464159 !important;
     color: white !important
 }
 
 .MySelector:hover {
-    background-color: #424874 !important;
+    background-color: #464159 !important;
     color: white !important
 }
 

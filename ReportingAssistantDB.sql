@@ -16,7 +16,7 @@ Gender nvarchar(50)
 
 )
 go
-
+select * from 
 create table Categories(
 
 CategoryID int primary key identity(1,1),

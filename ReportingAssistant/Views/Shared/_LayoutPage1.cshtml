@@ -21,27 +21,34 @@
 
         <div class="collapse navbar-collapse" id="CollabsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item active"><a class="nav-link" href="~/Home/Index">Home</a></li>
                 <li class="nav-item active"><a class="nav-link" href="#">About</a></li>
                 <li class="nav-item active"><a class="nav-link" href="#">Contact</a></li>
                 <li class="nav-item active"><a class="nav-link" href="#">Project</a></li>
                 <li class="nav-item active"><a class="nav-link" href="#">Task</a></li>
                 @if (Session["CurrentUserName"] == null)
                 {
-                    <li class="nav-item active"><a class="nav-link" href="~/Account/Login">Login</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="~/Account/Register">Register</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="~/Accounts/Login">Login</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="~/Accounts/Register">Register</a></li>
                 }
                 @if (Session["CurrentUserName"] != null)
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-                            <img src="~/Images/Icon.png" style="width:20px" />
+                            @if (Session["CurrentUserGender"].ToString() == "Male")
+                            {
+                                <img src="~/Images/Icon.png" style="width:20px" />
+                            }
+                            else
+                            {
+                                <img src="~/Images/FemaleIcon.png" style="width:20px" />
+                            }
                             @Session["CurrentUserName"]
                         </a>
                         <div class="dropdown-menu MySelector">
-                            <a class="dropdown-item" href="~/Account/ChangeProfile">Change Profile</a>
-                            <a class="dropdown-item" href="~/Account/ChangePassword">Change Password</a>
-                            <a class="dropdown-item" href="~/Account/logout">Logout</a>
+                            <a class="dropdown-item" href="~/Accounts/ChangeProfile">Change Profile</a>
+                            <a class="dropdown-item" href="~/Accounts/ChangePassword">Change Password</a>
+                            <a class="dropdown-item" href="~/Accounts/logout">Logout</a>
                         </div>
                     </li>
                 }
