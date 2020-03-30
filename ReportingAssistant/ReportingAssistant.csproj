@@ -280,6 +280,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Accounts\ChangeProfile.cshtml" />
+    <Content Include="Views\Accounts\ChangePassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -29,11 +29,12 @@
         <div class="form-group col-md-12">
 
             <button type="submit" class="btn MySelector">LOGIN</button>
-            <div class="text-danger"> @Html.ValidationSummary()</div>
         </div>
+
+        <div class="text-danger mt-5"> @Html.ValidationSummary()</div>
     </div>
 </form>
 
 <script>
-   $("a[href='/Accounts/Login']").attr("id","active")
+    $("a[href='/Accounts/Login']").attr("id", "active")
 </script>

@@ -112,6 +112,7 @@ namespace ReportingAssistant.ServiceLayer
             var Config = new MapperConfiguration(cfg => { cfg.CreateMap<EditUserPasswordViewModel, Users>(); });
             IMapper mapper = Config.CreateMapper();
             Users users = mapper.Map<EditUserPasswordViewModel, Users>(uvm);
+            users.PasswordHash = SHA256Converter.GenerateHash(uvm.Password);
             ur.UpdateUserPassword(users);
         }
     }

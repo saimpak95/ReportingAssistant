@@ -93,13 +93,33 @@ namespace ReportingAssistant.Controllers
         public ActionResult ChangeProfile(EditUserProfileViewModel euvm)
         {
             this.us.UpdateUserDetails(euvm);
-
             Session["CurrentUserName"] = euvm.UserName;
-
             Session["CurrentUserPhone"] = euvm.Phone;
-
             Session["CurrentUserGender"] = euvm.Gender;
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult ChangePassword()
+        {
+            int UserID = Convert.ToInt32(Session["CurrentUserID"]);
+            UserViewModel user = this.us.GetUsersByUserID(UserID);
+            EditUserPasswordViewModel eupm = new EditUserPasswordViewModel { UserID = user.UserID };
+            return View(eupm);
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(EditUserPasswordViewModel eupvm)
+        {
+            if (ModelState.IsValid)
+            {
+                this.us.UpdateUserPassword(eupvm);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid");
+                return View();
+            }
         }
     }
 }
