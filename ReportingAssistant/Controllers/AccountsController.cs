@@ -24,6 +24,7 @@ namespace ReportingAssistant.Controllers
         {
             if (ModelState.IsValid)
             {
+                rvm.Role = "User";
                 int LatestUserID = this.us.InserUser(rvm);
 
                 Session["CurrentUserID"] = LatestUserID;
@@ -31,6 +32,7 @@ namespace ReportingAssistant.Controllers
                 Session["CurrentUserEmail"] = rvm.Email;
                 Session["CurrentUserPhone"] = rvm.Phone;
                 Session["CurrentUserPassword"] = rvm.Password;
+                Session["CurrentUserRole"] = rvm.Role;
                 Session["CurrentUserGender"] = rvm.Gender;
                 return RedirectToAction("Index", "Home");
             }
@@ -59,8 +61,13 @@ namespace ReportingAssistant.Controllers
                     Session["CurrentUserEmail"] = user.Email;
                     Session["CurrentUserPhone"] = user.Phone;
                     Session["CurrentUserPassword"] = user.PasswordHash;
+                    Session["CurrentUserRole"] = user.Role;
                     Session["CurrentUserGender"] = user.Gender;
-                    return RedirectToAction("Index", "Home");
+
+                    if(Session["CurrentUserRole"].ToString()=="User")
+                        return RedirectToAction("Index", "Home");
+                    else 
+                        return RedirectToAction("Index", "Home", new {area="Admin" });
                 }
                 else
                 {

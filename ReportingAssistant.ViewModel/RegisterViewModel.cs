@@ -15,6 +15,9 @@ namespace ReportingAssistant.ViewModel
         public string Password { get; set; }
 
         [Required]
+        public string Role { get; set; }
+
+        [Required]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
