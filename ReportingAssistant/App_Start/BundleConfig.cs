@@ -10,7 +10,6 @@ namespace ReportingAssistant
             bundles.Add(new StyleBundle("~/Styles/Bootstrap").Include("~/Content/bootstrap.css"));
             bundles.Add(new StyleBundle("~/Styles/Site").Include("~/Content/StyleSheet.css"));
             BundleTable.EnableOptimizations = true;
-
         }
     }
 }

@@ -16,7 +16,10 @@ Gender nvarchar(50)
 
 )
 go
-select * from 
+
+
+
+select * from Users
 create table Categories(
 
 CategoryID int primary key identity(1,1),

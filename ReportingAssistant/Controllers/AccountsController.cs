@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using ReportingAssistant.ServiceLayer;
+﻿using ReportingAssistant.ServiceLayer;
 using ReportingAssistant.ViewModel;
+using System;
+using System.Web.Mvc;
 
 namespace ReportingAssistant.Controllers
 {
     public class AccountsController : Controller
     {
-        IUsersService us;
+        private IUsersService us;
+
         public AccountsController(IUsersService us)
         {
             this.us = us;
         }
+
         public ActionResult Register()
         {
-           
             return View();
         }
 
@@ -31,17 +29,16 @@ namespace ReportingAssistant.Controllers
                 Session["CurrentUserID"] = LatestUserID;
                 Session["CurrentUserName"] = rvm.UserName;
                 Session["CurrentUserEmail"] = rvm.Email;
+                Session["CurrentUserPhone"] = rvm.Phone;
                 Session["CurrentUserPassword"] = rvm.Password;
                 Session["CurrentUserGender"] = rvm.Gender;
                 return RedirectToAction("Index", "Home");
-
             }
             else
             {
                 ModelState.AddModelError("x", "Invalid");
                 return View();
             }
-         
         }
 
         public ActionResult Login()
@@ -57,10 +54,10 @@ namespace ReportingAssistant.Controllers
                 UserViewModel user = this.us.GetUsersByEmailAndPassword(lvm.Email, lvm.Password);
                 if (user != null)
                 {
-
                     Session["CurrentUserID"] = user.UserID;
-                    Session["CurrentUserName"] =user.UserName;
+                    Session["CurrentUserName"] = user.UserName;
                     Session["CurrentUserEmail"] = user.Email;
+                    Session["CurrentUserPhone"] = user.Phone;
                     Session["CurrentUserPassword"] = user.PasswordHash;
                     Session["CurrentUserGender"] = user.Gender;
                     return RedirectToAction("Index", "Home");
@@ -70,19 +67,38 @@ namespace ReportingAssistant.Controllers
                     ModelState.AddModelError("x", "Invalid Email And Password");
                     return View();
                 }
-                  
             }
             else
             {
                 ModelState.AddModelError("x", "Invalid Email And Password");
                 return View();
             }
-          
         }
 
         public ActionResult Logout()
         {
             Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult ChangeProfile()
+        {
+            int UserID = Convert.ToInt32(Session["CurrentUserID"]);
+            UserViewModel user = this.us.GetUsersByUserID(UserID);
+            EditUserProfileViewModel eupm = new EditUserProfileViewModel { Email = user.Email, UserName = user.UserName, Phone = user.Phone, Gender = user.Gender, UserID = user.UserID };
+            return View(eupm);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeProfile(EditUserProfileViewModel euvm)
+        {
+            this.us.UpdateUserDetails(euvm);
+
+            Session["CurrentUserName"] = euvm.UserName;
+
+            Session["CurrentUserPhone"] = euvm.Phone;
+
+            Session["CurrentUserGender"] = euvm.Gender;
             return RedirectToAction("Index", "Home");
         }
     }

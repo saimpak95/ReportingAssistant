@@ -1,0 +1,89 @@
+﻿@model ReportingAssistant.ViewModel.EditUserProfileViewModel
+@{
+    ViewBag.Title = "ChangeProfile";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1>REGISTRATION</h1>
+        <form novalidate="novalidate" action="~/Accounts/ChangeProfile" method="post" class="was-validated needs-validation">
+            @Html.AntiForgeryToken()
+            <div class="form-row">
+
+                <div class="form-group col-sm-6">
+                    <label>NAME</label>
+                    @Html.HiddenFor(temp => temp.UserID)
+                    @Html.HiddenFor(temp => temp.Email)
+                    <input type="text" class="form-control" id="TXTName" value="@Model.UserName" placeholder="Enter Name" name="UserName" required="required" pattern="^[a-zA-Z ]*$" />
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please Enter [Alphabate only]
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label>EMAIL</label>
+                    <input type="email" class="form-control" id="TXTEmail" value="@Model.Email" disabled placeholder="Enter Email" name="Email" required="required" />
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid Email
+                    </div>
+                    <small class="email-exist text-danger"></small>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label>PHONE</label>
+                    <input type="number" class="form-control" id="TXTPhone" value="@Model.Phone" placeholder="Enter Phone#" name="Phone" required="required" maxlength="11" />
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid Phone #
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label>GENDER</label>
+                    <select class="form-control" required="required" name="Gender">
+                        <option value="-1">Select Gender</option>
+                        @if (Model.Gender == "Male")
+                        {
+                            <option selected="selected">Male</option>
+                            <option>Female</option>
+                            <option>Others</option>
+                        }
+                        @if (Model.Gender == "Female")
+                        {
+                            <option>Male</option>
+                            <option selected="selected">Female</option>
+                            <option>Others</option>
+                        }
+                        @if (Model.Gender == "Others")
+                        {
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option selected="selected">Others</option>
+                        }
+                    </select>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid
+                    </div>
+                </div>
+                <button class="btn MySelector" type="submit">SAVE</button>
+            </div>
+            <br />
+            <span style="color:darkred">@Html.ValidationSummary()</span>
+        </form>
+    </div>
+</div>
+
+<script>
+    $("a[href='/Accounts/ChangeProfile']").attr("id", "active")
+</script>

@@ -86,7 +86,7 @@ namespace ReportingAssistant.Repository
             if (ExistingAccount != null)
             {
                 ExistingAccount.UserName = users.UserName;
-                ExistingAccount.Gender = users.UserName;
+                ExistingAccount.Gender = users.Gender;
                 ExistingAccount.Phone = users.Phone;
                 db.SaveChanges();
             }
