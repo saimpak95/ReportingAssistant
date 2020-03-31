@@ -172,6 +172,8 @@
     <Content Include="Areas\Admin\Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -257,6 +259,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -305,6 +308,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ReportingAssistant.DomainModel\ReportingAssistant.DomainModel.csproj">
+      <Project>{34b4754a-eb1a-49b1-ab2a-07aa8dd27b27}</Project>
+      <Name>ReportingAssistant.DomainModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReportingAssistant.ServiceLayer\ReportingAssistant.ServiceLayer.csproj">
       <Project>{0da3efbc-e1eb-4300-a53f-717947883ce5}</Project>
       <Name>ReportingAssistant.ServiceLayer</Name>

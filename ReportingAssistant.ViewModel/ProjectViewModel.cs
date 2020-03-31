@@ -13,12 +13,13 @@ namespace ReportingAssistant.ViewModel
 
         public int CategoryID { get; set; }
 
-        public string Image { get; set; }
+        public string Attachments { get; set; }
 
         public int AdminID { get; set; }
 
-        public virtual List<CategoriesViewModel> Categories { get; set; }
+        public virtual CategoriesViewModel Categories { get; set; }
+        public virtual UserViewModel users { get; set; }
 
-        public virtual List<UserViewModel> Users { get; set; }
+       
     }
 }

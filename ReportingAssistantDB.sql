@@ -18,7 +18,6 @@ Gender nvarchar(50)
 go
 
 
-
 select * from Users
 create table Categories(
 
@@ -35,11 +34,11 @@ ProjectName nvarchar(100) unique not null ,
 DateOfStart datetime,
 AvailabilityStatus nvarchar(100),
 CategoryID int references Categories(CategoryID) on delete cascade,
-Image nvarchar(max) null,
+Attachments nvarchar(max) null,
 AdminID int references Users(UserID)
 )
 go
-
+select * from Projects
 create table Tasks(
 
 TaskID int primary key identity(1,1),
@@ -77,4 +76,5 @@ ProjectID int references Projects(ProjectID) on delete set null
 
 )
 go
+
 

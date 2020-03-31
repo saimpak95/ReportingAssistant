@@ -14,7 +14,7 @@ namespace ReportingAssistant.ViewModel
 
         public int CategoryID { get; set; }
 
-        public string Image { get; set; }
+        public string Attachments { get; set; }
 
         public int AdminID { get; set; }
 

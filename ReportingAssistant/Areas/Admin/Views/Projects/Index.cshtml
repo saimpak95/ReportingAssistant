@@ -1,0 +1,25 @@
+﻿@model List<ReportingAssistant.ViewModel.ProjectViewModel>
+@{
+    ViewBag.Title = "Projects";
+}
+
+    <table class="table">
+        <tr>
+            <th>Project Name</th>
+            <th>Catgory</th>
+            <th>Date Of Assign</th>
+            <th>Availability Status</th>
+            <th>Attachment</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProjectName</td>
+                <td>@item.Categories.CategoryName</td>
+                <td>@item.DateOfStart</td>
+                <td>@item.AvailabilityStatus</td>
+                <td><img src="data:image;base64,@item.Attachments" style="width:60px"/></td>
+            </tr>
+        }
+
+    </table>

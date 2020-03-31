@@ -58,7 +58,7 @@ namespace ReportingAssistant.Repository
             ExistingProject.AvailabilityStatus = projects.AvailabilityStatus;
             ExistingProject.CategoryID = projects.CategoryID;
             ExistingProject.AdminID = projects.AdminID;
-            ExistingProject.Image = projects.Image;
+            ExistingProject.Attachments = projects.Attachments;
             db.SaveChanges();
         }
     }
