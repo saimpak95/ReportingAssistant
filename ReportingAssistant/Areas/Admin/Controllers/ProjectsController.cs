@@ -61,5 +61,42 @@ namespace ReportingAssistant.Areas.Admin.Controllers
             }
             
         }
+
+        public ActionResult Edit(int ID)
+        {
+            ProjectViewModel pvm = this.ps.GetProjectByID(ID);
+            ViewBag.Categories = db.categories.ToList();
+            return View(pvm);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditProjectDetailViewModel pvm)
+        {
+            pvm.AdminID = Convert.ToInt32(Session["CurrentUserID"]);
+            pvm.DateOfStart = DateTime.Now;
+            if (pvm.Attachments != null)
+            {
+                if (Request.Files.Count >= 1)
+                {
+                    var File = Request.Files[0];
+                    var ImgByte = new Byte[File.ContentLength - 1];
+                    File.InputStream.Read(ImgByte, 0, ImgByte.Length);
+                    var Base64String = Convert.ToBase64String(ImgByte, 0, ImgByte.Length);
+                    pvm.Attachments = Base64String;
+                }
+            }
+            this.ps.UpdateProject(pvm);
+            return RedirectToAction("Index", "Home", new { area = "Admin" });
+        }
+
+        public ActionResult Delete(int ID)
+        {
+            return View();
+        }
+
+        public ActionResult Detail(int ID)
+        {
+            return View();
+        }
     }
 }

@@ -2,14 +2,16 @@
 @{
     ViewBag.Title = "Projects";
 }
-
-    <table class="table">
+<br />
+<a class="MySelectorText" href="~/Admin/Projects/Create">New Project</a>
+    <table class="table mt-2">
         <tr>
             <th>Project Name</th>
             <th>Catgory</th>
             <th>Date Of Assign</th>
             <th>Availability Status</th>
             <th>Attachment</th>
+            <th>Acions</th>
         </tr>
         @foreach (var item in Model)
         {
@@ -19,6 +21,7 @@
                 <td>@item.DateOfStart</td>
                 <td>@item.AvailabilityStatus</td>
                 <td><img src="data:image;base64,@item.Attachments" style="width:60px"/></td>
+                <td><a class="MySelectorText" href="~/Admin/Projects/Edit/@item.ProjectID">Edit</a> | <a class="MySelectorText" href="~/Admin/ProjectsProducts/Delete/@item.ProjectID">Delete</a> | <a class="MySelectorText" href="~/Admin/Projects/Details/@item.ProjectID">Details</a></td>
             </tr>
         }
 

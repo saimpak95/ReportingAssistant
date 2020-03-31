@@ -37,3 +37,7 @@
 .MySelectorText {
     color: #424874;
 }
+
+.MySelectorText:hover {
+    color: #424874;
+}

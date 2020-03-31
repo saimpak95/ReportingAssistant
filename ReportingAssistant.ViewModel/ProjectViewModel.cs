@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace ReportingAssistant.ViewModel
 {
     public class ProjectViewModel
     {
+        public int ProjectID { get; set; }
+
         public string ProjectName { get; set; }
 
         public DateTime DateOfStart { get; set; }
@@ -19,7 +20,5 @@ namespace ReportingAssistant.ViewModel
 
         public virtual CategoriesViewModel Categories { get; set; }
         public virtual UserViewModel users { get; set; }
-
-       
     }
 }
