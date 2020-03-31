@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-12">
             <h1>REGISTRATION</h1>
-           
+
             <form novalidate="novalidate" action="~/Accounts/Register" method="post" class="was-validated needs-validation">
                 @Html.AntiForgeryToken()
                 <div class="form-row">
@@ -19,7 +19,7 @@
                             Please Enter [Alphabate only]
                         </div>
                     </div>
-                 
+
                     <div class="form-group col-sm-6">
                         <label>EMAIL</label>
                         <input type="email" class="form-control" id="TXTEmail" placeholder="Enter Email" name="Email" required="required" />

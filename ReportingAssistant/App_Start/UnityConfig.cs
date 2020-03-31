@@ -15,7 +15,7 @@ namespace ReportingAssistant
             // it is NOT necessary to register your controllers
             container.RegisterType<IUsersService, UsersService>();
             container.RegisterType<ICategoryService, CategoryService>();
-            container.RegisterType<IProjectService,ProjectService>();
+            container.RegisterType<IProjectService, ProjectService>();
 
             // e.g. container.RegisterType<ITestService, TestService>();
 

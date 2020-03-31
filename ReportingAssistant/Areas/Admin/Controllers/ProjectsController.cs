@@ -1,26 +1,28 @@
-﻿using System;
+﻿using ReportingAssistant.DomainModel;
+using ReportingAssistant.ServiceLayer;
+using ReportingAssistant.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using ReportingAssistant.ServiceLayer;
-using ReportingAssistant.DomainModel;
-using ReportingAssistant.ViewModel;
 
 namespace ReportingAssistant.Areas.Admin.Controllers
 {
     public class ProjectsController : Controller
     {
         // GET: Admin/Projects
-        ICategoryService cs;
-        ReportingAssistantDBContext db;
-        IProjectService ps;
-        public ProjectsController(ICategoryService cs,IProjectService ps)
+        private ICategoryService cs;
+
+        private ReportingAssistantDBContext db;
+        private IProjectService ps;
+
+        public ProjectsController(ICategoryService cs, IProjectService ps)
         {
             this.cs = cs;
             this.ps = ps;
             db = new ReportingAssistantDBContext();
         }
+
         public ActionResult Index()
         {
             List<ProjectViewModel> pvm = this.ps.GetProject();
@@ -32,12 +34,13 @@ namespace ReportingAssistant.Areas.Admin.Controllers
             ViewBag.Categories = db.categories.ToList();
             return View();
         }
+
         [HttpPost]
         public ActionResult Create(NewProjectViewModel npvm)
         {
             npvm.AdminID = Convert.ToInt32(Session["CurrentUserID"]);
             npvm.DateOfStart = DateTime.Now;
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (npvm.Attachments != null)
                 {
@@ -51,7 +54,7 @@ namespace ReportingAssistant.Areas.Admin.Controllers
                     }
                 }
                 this.ps.InsertProject(npvm);
-               return RedirectToAction("Index", "Home", new { area = "Admin" });
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
             }
             else
             {
@@ -59,7 +62,6 @@ namespace ReportingAssistant.Areas.Admin.Controllers
                 ModelState.AddModelError("X", "Invalid");
                 return View();
             }
-            
         }
 
         public ActionResult Edit(int ID)

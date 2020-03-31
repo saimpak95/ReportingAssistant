@@ -64,10 +64,10 @@ namespace ReportingAssistant.Controllers
                     Session["CurrentUserRole"] = user.Role;
                     Session["CurrentUserGender"] = user.Gender;
 
-                    if(Session["CurrentUserRole"].ToString()=="User")
+                    if (Session["CurrentUserRole"].ToString() == "User")
                         return RedirectToAction("Index", "Home");
-                    else 
-                        return RedirectToAction("Index", "Home", new {area="Admin" });
+                    else
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
                 }
                 else
                 {
