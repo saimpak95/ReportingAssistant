@@ -93,12 +93,21 @@ namespace ReportingAssistant.Areas.Admin.Controllers
 
         public ActionResult Delete(int ID)
         {
-            return View();
+            ProjectViewModel pvm = this.ps.GetProjectByID(ID);
+            return View(pvm);
         }
 
-        public ActionResult Detail(int ID)
+        [HttpPost]
+        public ActionResult Delete(int ID,DeleteProjectViewModel pvm)
         {
-            return View();
+            this.ps.DeleteProjects(ID);
+            return RedirectToAction("Index", "Projects", new { area = "admin" });
+        }
+
+        public ActionResult Details(int ID)
+        {
+            ProjectViewModel pvm = this.ps.GetProjectByID(ID);
+            return View(pvm);
         }
     }
 }

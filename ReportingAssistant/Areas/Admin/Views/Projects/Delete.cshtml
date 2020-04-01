@@ -1,0 +1,42 @@
+﻿@model ReportingAssistant.ViewModel.ProjectViewModel
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+
+<table class="table">
+    <tr>
+        <th>PROJECT NAME</th>
+        <td>@Model.ProjectName</td>
+    </tr>
+    <tr>
+        <th>CATEGORY</th>
+        <td>@Model.Categories.CategoryName</td>
+    </tr>
+    <tr>
+        <th>DATE OF START</th>
+        <td>@Model.DateOfStart</td>
+    </tr>
+    <tr>
+        <th>AVAILABLILITY STATUS</th>
+        <td>@Model.AvailabilityStatus</td>
+    </tr>
+    <tr>
+        <th>USER NAME</th>
+        <td>@Model.users.UserName</td>
+    </tr>
+    <tr>
+        <th>USER ROLE</th>
+        <td>@Model.users.Role</td>
+    </tr>
+</table>
+
+
+<form action="~/Admin/Projects/Delete/@Model.ProjectID" method="post">
+    <p class="p-3">ARE YOU SURE YOU WANT TO DELETE? </p>
+    <button class="MySelector btn mb-4" type="submit">DELETE</button>
+</form>
+
+<a class="MySelectorText" href="~/Admin/Projects/Index">Back to List</a>

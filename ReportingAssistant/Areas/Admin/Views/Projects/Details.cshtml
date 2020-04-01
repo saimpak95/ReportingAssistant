@@ -1,0 +1,36 @@
+﻿@model ReportingAssistant.ViewModel.ProjectViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+<br />
+<h4>Details</h4><br />
+
+<table class="table">
+    <tr>
+        <th>PROJECT NAME</th>
+        <td>@Model.ProjectName</td>
+    </tr>
+    <tr>
+        <th>CATEGORY</th>
+        <td>@Model.Categories.CategoryName</td>
+    </tr>
+    <tr>
+        <th>DATE OF START</th>
+        <td>@Model.DateOfStart</td>
+    </tr>
+    <tr>
+        <th>AVAILABLILITY STATUS</th>
+        <td>@Model.AvailabilityStatus</td>
+    </tr>
+    <tr>
+        <th>USER NAME</th>
+        <td>@Model.users.UserName</td>
+    </tr>
+    <tr>
+        <th>USER ROLE</th>
+        <td>@Model.users.Role</td>
+    </tr>
+</table>
+
+<a class="MySelectorText" href="~/Admin/Projects/Index">Back to List</a>
+
