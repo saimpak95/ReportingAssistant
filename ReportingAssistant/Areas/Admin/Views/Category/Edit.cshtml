@@ -1,0 +1,20 @@
+﻿@model ReportingAssistant.ViewModel.CategoriesViewModel
+@{
+    ViewBag.Title = "Edit Category";
+}
+    <h2>Edit</h2>
+<form class="mt-5" action="/Admin/Category/Edit/@Model.CategoryID" method="post">
+    <div class="form-row">
+        @Html.HiddenFor(temp => temp.CategoryID)
+        <div class="form-group col-6">
+            <label>Category Name</label>
+            <input class="form-control" type="text" placeholder="Category Name" value="@Model.CategoryName" name="CategoryName" />
+        </div>
+       
+            </div>
+     
+        <button class="btn MySelector" type="submit">SAVE</button>
+
+</form>
+
+@Html.ValidationSummary()

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Create Category";
+}
+
+<form class="mt-5" action="/Admin/Category/Create/" method="post">
+    <div class="form-row">
+        <div class="form-group col-6">
+            <label>Category Name</label>
+            <input class="form-control" type="text" placeholder="Category Name" value="" name="CategoryName" />
+        </div>
+
+    </div>
+
+    <button class="btn MySelector" type="submit">CREATE</button>
+
+</form>
+
+@Html.ValidationSummary()

@@ -1,0 +1,22 @@
+﻿@model ReportingAssistant.ViewModel.CategoriesViewModel
+@{
+    ViewBag.Title = "Delete Category";
+}
+
+<h2>Delete</h2>
+
+
+<table class="table">
+    <tr>
+        <th>CATEGORY NAME</th>
+        <td>@Model.CategoryName</td>
+    </tr>
+</table>
+
+
+<form action="~/Admin/Category/Delete/@Model.CategoryID" method="post">
+    <p class="p-3">ARE YOU SURE YOU WANT TO DELETE? </p>
+    <button class="MySelector btn mb-4" type="submit">DELETE</button>
+</form>
+
+<a class="MySelectorText" href="~/Admin/Category/Index">Back to List</a>
