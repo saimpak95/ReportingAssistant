@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace ReportingAssistant.ViewModel
 {
@@ -20,6 +19,5 @@ namespace ReportingAssistant.ViewModel
         public virtual UserViewModel user { get; set; }
 
         public virtual UserViewModel Admin { get; set; }
-
     }
 }

@@ -1,21 +1,19 @@
-﻿using ReportingAssistant.ViewModel;
-using System;
+﻿using ReportingAssistant.ServiceLayer;
+using ReportingAssistant.ViewModel;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using ReportingAssistant.ServiceLayer;
-using ReportingAssistant.DomainModel;
 
 namespace ReportingAssistant.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
-        ICategoryService cs;
+        private ICategoryService cs;
+
         public CategoryController(ICategoryService cs)
         {
             this.cs = cs;
         }
+
         public ActionResult Index()
         {
             List<CategoriesViewModel> cvm = cs.GetCategory();
@@ -36,11 +34,11 @@ namespace ReportingAssistant.Areas.Admin.Controllers
             }
             return RedirectToAction("Index", "Category", new { area = "Admin" });
         }
+
         public ActionResult Edit(int ID)
         {
             CategoriesViewModel cvm = this.cs.GetCategoryByID(ID);
             return View(cvm);
-
         }
 
         [HttpPost]
@@ -48,7 +46,6 @@ namespace ReportingAssistant.Areas.Admin.Controllers
         {
             this.cs.UpdateCategory(ecvm);
             return RedirectToAction("Index", "Category", new { area = "Admin" });
-
         }
 
         public ActionResult Delete(int ID)

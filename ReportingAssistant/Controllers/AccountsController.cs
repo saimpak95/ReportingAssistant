@@ -25,7 +25,6 @@ namespace ReportingAssistant.Controllers
             rvm.Role = "User";
             if (ModelState.IsValid)
             {
-                
                 int LatestUserID = this.us.InserUser(rvm);
 
                 Session["CurrentUserID"] = LatestUserID;

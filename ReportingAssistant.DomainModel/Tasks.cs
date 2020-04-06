@@ -9,6 +9,7 @@ namespace ReportingAssistant.DomainModel
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TaskID { get; set; }
+
         public string Screen { get; set; }
         public string TaskDescription { get; set; }
         public int AdminID { get; set; }
@@ -24,6 +25,6 @@ namespace ReportingAssistant.DomainModel
         public virtual Users User { get; set; }
 
         [ForeignKey("AdminID")]
-        public virtual Users Admin{ get; set; }
+        public virtual Users Admin { get; set; }
     }
 }

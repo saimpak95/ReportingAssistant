@@ -8,14 +8,13 @@
 <table class="table mt-2">
     <tr>
         <th>Category Name</th>
-        
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-  
+
             <td>@item.CategoryName</td>
-          
+
             <td><a class="MySelectorText" href="~/Admin/Category/Edit/@item.CategoryID">Edit</a> | <a class="MySelectorText" href="~/Admin/Category/Delete/@item.CategoryID">Delete</a> | <a class="MySelectorText" href="~/Admin/Category/Detail/@item.CategoryID">Details</a></td>
         </tr>
     }

@@ -4,20 +4,21 @@ using ReportingAssistant.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ReportingAssistant.Areas.Admin.Controllers
 {
     public class TaskController : Controller
     {
-        ITaskService ts;
-        ReportingAssistantDBContext db;
+        private ITaskService ts;
+        private ReportingAssistantDBContext db;
+
         public TaskController(ITaskService ts)
         {
             this.ts = ts;
             db = new ReportingAssistantDBContext();
         }
+
         public ActionResult Index()
         {
             List<TaskViewModel> tvm = this.ts.GetTasks();
@@ -28,7 +29,7 @@ namespace ReportingAssistant.Areas.Admin.Controllers
         {
             int SessionID = Convert.ToInt32(Session["CurrentUserID"]);
             List<Projects> projects = db.projects.Where(temp => temp.AdminID == SessionID).ToList();
-            List<Users> users = db.users.Where(temp=>temp.Role!="Admin").ToList();
+            List<Users> users = db.users.Where(temp => temp.Role != "Admin").ToList();
             ViewBag.Projects = projects;
             ViewBag.User = users;
             return View();
@@ -41,15 +42,15 @@ namespace ReportingAssistant.Areas.Admin.Controllers
             ntvm.DateOfTask = DateTime.Now;
             if (ModelState.IsValid)
             {
-                 if (Request.Files.Count >= 1)
-                    {
-                        var File = Request.Files[0];
-                        var ImgByte = new Byte[File.ContentLength - 1];
-                        File.InputStream.Read(ImgByte, 0, ImgByte.Length);
-                        var Base64String = Convert.ToBase64String(ImgByte, 0, ImgByte.Length);
+                if (Request.Files.Count >= 1)
+                {
+                    var File = Request.Files[0];
+                    var ImgByte = new Byte[File.ContentLength - 1];
+                    File.InputStream.Read(ImgByte, 0, ImgByte.Length);
+                    var Base64String = Convert.ToBase64String(ImgByte, 0, ImgByte.Length);
                     ntvm.Attachments = Base64String;
-                    }
-              
+                }
+
                 this.ts.InsertTask(ntvm);
             }
             else
@@ -63,7 +64,6 @@ namespace ReportingAssistant.Areas.Admin.Controllers
                 return View();
             }
             return RedirectToAction("Index", "Task", new { area = "Admin" });
-            
         }
 
         public ActionResult Edit(int ID)
@@ -114,7 +114,7 @@ namespace ReportingAssistant.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int ID,TaskViewModel tvm)
+        public ActionResult Delete(int ID, TaskViewModel tvm)
         {
             this.ts.DeleteTask(ID);
             return RedirectToAction("Index", "Task", new { area = "Admin" });

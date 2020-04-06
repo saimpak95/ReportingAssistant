@@ -14,7 +14,6 @@ namespace ReportingAssistant.ViewModel
         [Required]
         public string Password { get; set; }
 
- 
         public string Role { get; set; }
 
         [Required]
