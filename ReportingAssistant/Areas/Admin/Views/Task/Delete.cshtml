@@ -1,0 +1,39 @@
+﻿@model ReportingAssistant.ViewModel.TaskViewModel
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+
+<table class="table">
+
+    <tr>
+        <th>SCREEN</th>
+        <td>@Model.Screen</td>
+    </tr>
+    <tr>
+        <th>TASK DESCRIPTION</th>
+        <td>@Model.TaskDescription</td>
+    </tr>
+    <tr>
+        <th>DATE OF ASSIGN</th>
+        <td>@Model.DateOfTask</td>
+    </tr>
+    <tr>
+        <th>ASSIGN TO</th>
+        <td>@Model.user.UserName</td>
+    </tr>
+    <tr>
+        <th>ASSIGN BY</th>
+        <td>@Model.Admin.UserName</td>
+    </tr>
+</table>
+
+
+<form action="~/Admin/Task/Delete/@Model.TaskID" method="post">
+    <p class="p-3">ARE YOU SURE YOU WANT TO DELETE? </p>
+    <button class="MySelector btn mb-4" type="submit">DELETE</button>
+</form>
+
+<a class="MySelectorText" href="~/Admin/Task/Index">Back to List</a>

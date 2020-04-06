@@ -22,9 +22,10 @@ namespace ReportingAssistant.Controllers
         [HttpPost]
         public ActionResult Register(RegisterViewModel rvm)
         {
+            rvm.Role = "User";
             if (ModelState.IsValid)
             {
-                rvm.Role = "User";
+                
                 int LatestUserID = this.us.InserUser(rvm);
 
                 Session["CurrentUserID"] = LatestUserID;

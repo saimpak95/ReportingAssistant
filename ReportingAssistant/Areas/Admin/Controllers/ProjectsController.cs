@@ -98,7 +98,7 @@ namespace ReportingAssistant.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int ID,DeleteProjectViewModel pvm)
+        public ActionResult Delete(int ID, DeleteProjectViewModel pvm)
         {
             this.ps.DeleteProjects(ID);
             return RedirectToAction("Index", "Projects", new { area = "admin" });

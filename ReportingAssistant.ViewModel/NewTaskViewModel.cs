@@ -11,13 +11,11 @@ namespace ReportingAssistant.ViewModel
         [Required]
         public string TaskDescription { get; set; }
 
-        [Required]
         public int AdminID { get; set; }
 
         [Required]
         public int UserID { get; set; }
 
-        [Required]
         public DateTime DateOfTask { get; set; }
 
         [Required]

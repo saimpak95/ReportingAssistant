@@ -36,7 +36,7 @@ namespace ReportingAssistant.ServiceLayer
         public List<TaskViewModel> GetTasks()
         {
             List<Tasks> tasks = tr.GetTasks();
-            var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Tasks, TaskViewModel>(); cfg.CreateMap<Users, UserViewModel>(); cfg.CreateMap<Projects, ProjectViewModel>(); });
+            var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Tasks, TaskViewModel>(); cfg.CreateMap<Users, UserViewModel>(); cfg.CreateMap<Projects, ProjectViewModel>(); cfg.CreateMap<Categories, CategoriesViewModel>(); });
             IMapper mapper = Config.CreateMapper();
             List<TaskViewModel> tvm = mapper.Map<List<Tasks>, List<TaskViewModel>>(tasks);
             return tvm;
@@ -48,7 +48,7 @@ namespace ReportingAssistant.ServiceLayer
             TaskViewModel tvm = null;
             if (tasks != null)
             {
-                var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Tasks, TaskViewModel>(); cfg.CreateMap<Users, UserViewModel>(); cfg.CreateMap<Projects, ProjectViewModel>(); });
+                var Config = new MapperConfiguration(cfg => { cfg.CreateMap<Tasks, TaskViewModel>(); cfg.CreateMap<Users, UserViewModel>(); cfg.CreateMap<Projects, ProjectViewModel>(); cfg.CreateMap<Categories, CategoriesViewModel>(); });
                 IMapper mapper = Config.CreateMapper();
                 tvm = mapper.Map<Tasks, TaskViewModel>(tasks);
                 return tvm;

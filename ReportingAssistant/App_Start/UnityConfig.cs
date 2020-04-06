@@ -16,7 +16,8 @@ namespace ReportingAssistant
             container.RegisterType<IUsersService, UsersService>();
             container.RegisterType<ICategoryService, CategoryService>();
             container.RegisterType<IProjectService, ProjectService>();
-
+            container.RegisterType<ITaskService, TaskService>();
+            container.RegisterType<ITaskDoneService, TaskDoneService>();
             // e.g. container.RegisterType<ITestService, TestService>();
 
             DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));

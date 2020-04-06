@@ -1,0 +1,35 @@
+﻿@model List<ReportingAssistant.ViewModel.TaskViewModel>
+@{
+    ViewBag.Title = "Task";
+}
+
+<br />
+<a class="MySelectorText" href="~/Admin/Task/Create">New Task</a>
+<table class="table mt-2">
+    <tr>
+        <th>Project Name</th>
+        <th>Screen</th>
+        <th>TaskDescription</th>
+        <th>Assign by</th>
+        <th>Assign to</th>
+        <th>DateOfTask</th>
+        <th>Attachments</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.Projects.ProjectName</td>
+    <td>@item.Screen</td>
+    <td>@item.TaskDescription</td>
+    <td>@item.Admin.UserName</td>
+    <td>@item.user.UserName</td>
+    <td>@item.DateOfTask</td>
+    <td><img src="data:image; base64,@item.Attachments" style="width:60px" /></td>
+
+
+
+    <td><a class="MySelectorText" href="~/Admin/Task/Edit/@item.TaskID">Edit</a> | <a class="MySelectorText" href="~/Admin/Task/Delete/@item.TaskID">Delete</a> | <a class="MySelectorText" href="~/Admin/Task/Detail/@item.TaskID">Details</a></td>
+</tr>
+    }
+</table>

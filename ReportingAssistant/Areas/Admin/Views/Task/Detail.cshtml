@@ -1,0 +1,33 @@
+﻿@model ReportingAssistant.ViewModel.TaskViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+
+<table class="table">
+
+    <tr>
+        <th>SCREEN</th>
+        <td>@Model.Screen</td>
+    </tr>
+    <tr>
+        <th>TASK DESCRIPTION</th>
+        <td>@Model.TaskDescription</td>
+    </tr>
+    <tr>
+        <th>DATE OF ASSIGN</th>
+        <td>@Model.DateOfTask</td>
+    </tr>
+    <tr>
+        <th>ASSIGN TO</th>
+        <td>@Model.user.UserName</td>
+    </tr>
+    <tr>
+        <th>ASSIGN BY</th>
+        <td>@Model.Admin.UserName</td>
+    </tr>
+</table>
+
+<a class="MySelectorText" href="~/Admin/Task/Index">Back to List</a>

@@ -15,8 +15,11 @@ namespace ReportingAssistant.ViewModel
         public string Attachments { get; set; }
         public int ProjectID { get; set; }
 
-        public virtual List<ProjectViewModel> Projects { get; set; }
+        public virtual ProjectViewModel Projects { get; set; }
 
-        public virtual List<UserViewModel> Users { get; set; }
+        public virtual UserViewModel user { get; set; }
+
+        public virtual UserViewModel Admin { get; set; }
+
     }
 }
